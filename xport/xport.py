@@ -284,7 +284,7 @@ if __name__ == "__main__":
         for obj in reader:
             try:
                 print(obj)
-            except IOError, e:
+            except IOError as e:
                 # except block to gracefully exit on broken pipe signal (e.g. xport.py foo.xpt | head)
                 import errno
                 if e.errno == errno.EPIPE:
