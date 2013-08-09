@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='xport',
-    version='0.2.0',
+    version='0.2.1',
     author=u'Jack Cushman',
     author_email='jcushman@gmail.com',
     packages=find_packages(),

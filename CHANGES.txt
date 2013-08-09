@@ -1,3 +1,5 @@
+v0.2.1, 2013-08-13 -- Python 3.x fixes.
+
 v0.2.0, 2013-08-13 -- Support variable length numerics (floats).
 
 v0.1.0, 2012-05-02 -- Initial release.
