@@ -137,7 +137,7 @@ class XportReader(object):
         if self.opened_file:
             try:
                 self.file.close()
-            except:
+            except Exception:
                 pass
 
     def _get_row(self):
