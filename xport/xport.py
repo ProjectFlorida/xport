@@ -77,6 +77,8 @@ def parse_float(bitstring):
            (xport1 & 0x80000000);
     """
 
+    # Pad string with zeros so so it is always 8 bytes long
+    bitstring += chr(0) * (8 - len(bitstring))
     xport1, xport2 = struct.unpack('>II', bitstring)
 
     # Start by setting first half of ieee number to first half of IBM number sans exponent
@@ -228,8 +230,8 @@ class XportReader(object):
             field = dict(zip(['ntype','nhfun','field_length','nvar0','name','label','nform','nfl','num_decimals','nfj','nfill','niform','nifl','nifd','npos','_'],fieldstruct))
             del field['_']
             field['ntype'] = types[field['ntype']]
-            if field['ntype']=='numeric' and field['field_length'] != 8:
-                raise TypeError("Oops -- only 8-byte floats are currently implemented. Can't read field %s." % field)
+            if field['ntype']=='numeric' and field['field_length'] > 8:
+                raise TypeError("Oops -- > 8-byte floats are currently not implemented. Can't read field %s." % field)
             for k, v in field.items():
                 try:
                     field[k] = v.strip()
